@@ -1,0 +1,11 @@
+permlanguage: generic
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t testimage -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true testimage npm run testision
